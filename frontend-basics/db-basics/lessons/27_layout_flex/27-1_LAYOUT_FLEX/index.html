@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexbox レイアウト演習 - 確認用（Lesson 27）</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="page-head">
+            <h1>Flexbox レイアウト演習 — 確認用</h1>
+            <p>Lesson 27 の5問を1ページにまとめました。見た目と、その下に「使ったCSS」が並んでいます。
+               見やすさのためボックスは 80px、コンテナの高さは 200px に縮めていますが、考え方は元の課題と同じです。</p>
+        </header>
+
+        <!-- 演習1 -->
+        <section class="exercise">
+            <h2><span class="num">1</span>横一列に並べる</h2>
+            <p class="desc">何もしないと縦に積まれる div を、横方向に並べる。</p>
+            <div class="container ex1">
+                <div class="box a"></div><div class="box b"></div><div class="box c"></div><div class="box d"></div>
+            </div>
+            <pre><code>.container {
+    display: flex;
+}</code></pre>
+        </section>
+
+        <!-- 演習2 -->
+        <section class="exercise">
+            <h2><span class="num">2</span>中央に横並び</h2>
+            <p class="desc">justify-content で横方向（主軸）の位置を中央に。</p>
+            <div class="container ex2">
+                <div class="box a"></div><div class="box b"></div><div class="box c"></div><div class="box d"></div>
+            </div>
+            <pre><code>.container {
+    display: flex;
+    justify-content: center;
+}</code></pre>
+        </section>
+
+        <!-- 演習3 -->
+        <section class="exercise">
+            <h2><span class="num">3</span>均等な間隔で横並び</h2>
+            <p class="desc">space-between は両端を端に付け、間を均等に空ける。</p>
+            <div class="container ex3">
+                <div class="box a"></div><div class="box b"></div><div class="box c"></div><div class="box d"></div>
+            </div>
+            <pre><code>.container {
+    display: flex;
+    justify-content: space-between;
+}</code></pre>
+            <div class="note">完全に均等にしたいときは <strong>space-evenly</strong>、各要素の左右に均等な余白なら <strong>space-around</strong> に変えてみてください。</div>
+        </section>
+
+        <!-- 演習4 -->
+        <section class="exercise">
+            <h2><span class="num">4</span>縦中央に横並び</h2>
+            <p class="desc">align-items で縦方向（交差軸）の位置を中央に。上下に余白ができます。</p>
+            <div class="container ex4">
+                <div class="box a"></div><div class="box b"></div><div class="box c"></div><div class="box d"></div>
+            </div>
+            <pre><code>.container {
+    display: flex;
+    align-items: center;
+}</code></pre>
+        </section>
+
+        <!-- 演習5 -->
+        <section class="exercise">
+            <h2><span class="num">5</span>2×2 のグリッド</h2>
+            <p class="desc">flex-wrap: wrap で折り返し、コンテナ幅を「2個分」にして2行に。</p>
+            <div class="container ex5">
+                <div class="box a"></div><div class="box b"></div><div class="box c"></div><div class="box d"></div>
+            </div>
+            <pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 160px;  /* 80px × 2 でいっぱい */
+}</code></pre>
+            <div class="note">幅が広いと折り返しが起きません。<strong>「ボックス2個でいっぱいになる幅」</strong>にするのがポイント。元の課題（100px のボックス）なら <strong>width: 200px</strong> です。</div>
+        </section>
+    </div>
+</body>
+
+</html>

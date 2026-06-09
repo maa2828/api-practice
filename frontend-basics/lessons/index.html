@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>農業の音声記録アプリ</title>
+    <style>
+      :root {
+        --bg: #eee7d7;
+        --panel: rgba(252, 249, 241, 0.88);
+        --panel-strong: rgba(255, 253, 248, 0.94);
+        --line: rgba(83, 88, 49, 0.14);
+        --text: #26311d;
+        --muted: #657153;
+        --accent: #6b8f3a;
+        --accent-strong: #4f6f27;
+        --soil: #a97b4a;
+        --sky: #dce8ce;
+        --shadow: 0 24px 60px rgba(71, 63, 40, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(118, 154, 70, 0.18), transparent 26%),
+          radial-gradient(circle at bottom right, rgba(169, 123, 74, 0.15), transparent 22%),
+          linear-gradient(160deg, #f4f0e2 0%, var(--bg) 100%);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 28px 0 56px;
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 34px;
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -40px -40px auto;
+        width: 220px;
+        height: 220px;
+        border-radius: 999px;
+        background: rgba(107, 143, 58, 0.08);
+        filter: blur(8px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(107, 143, 58, 0.1);
+        color: var(--accent-strong);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        margin: 18px 0 14px;
+        font-size: clamp(2.3rem, 6vw, 4.6rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .lead {
+        margin: 0;
+        max-width: 33rem;
+        color: var(--muted);
+        font-size: 1.04rem;
+        line-height: 1.9;
+      }
+
+      .hero-points {
+        display: grid;
+        gap: 12px;
+        margin: 24px 0 0;
+      }
+
+      .hero-points span {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .hero-points span::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--accent) 0%, var(--soil) 100%);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button-primary {
+        background: var(--accent);
+        color: #fffdf7;
+      }
+
+      .button-primary:hover {
+        background: var(--accent-strong);
+      }
+
+      .button-secondary {
+        border-color: rgba(83, 88, 49, 0.14);
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--text);
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .hero-image {
+        border-radius: 28px;
+        border: 1px solid rgba(83, 88, 49, 0.12);
+        background: var(--panel-strong);
+        box-shadow: 0 16px 40px rgba(70, 62, 42, 0.12);
+      }
+
+      .voice-badge {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        width: min(260px, 72%);
+        padding: 14px 16px;
+        border-radius: 22px;
+        background: rgba(34, 49, 29, 0.9);
+        color: #f3f6e8;
+        box-shadow: 0 18px 34px rgba(34, 49, 29, 0.22);
+      }
+
+      .voice-badge strong,
+      .voice-badge span {
+        display: block;
+      }
+
+      .voice-badge span {
+        color: rgba(243, 246, 232, 0.78);
+        font-size: 0.85rem;
+      }
+
+      .voice-badge strong {
+        margin-top: 4px;
+        font-size: 1rem;
+      }
+
+      .wave {
+        display: grid;
+        grid-template-columns: repeat(18, 1fr);
+        gap: 4px;
+        align-items: end;
+        height: 44px;
+        margin-top: 12px;
+      }
+
+      .wave span {
+        display: block;
+        width: 100%;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #d9e8aa 0%, #7ca244 100%);
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .info-card {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.52);
+        box-shadow: 0 10px 28px rgba(71, 63, 40, 0.06);
+      }
+
+      .info-card h2 {
+        margin: 0 0 10px;
+        font-size: 1.12rem;
+      }
+
+      .info-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 22px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(100%, calc(100% - 18px));
+          padding-top: 14px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .voice-badge {
+          position: static;
+          width: 100%;
+          margin-top: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">農業の記録を、声でかんたんに</span>
+          <h1>畑の出来事を<br />その場で声に残す。</h1>
+          <p class="lead">
+            収穫の様子、作業の気づき、天気や土の状態などを、
+            文字入力ではなく声で手軽に残せる音声日記アプリです。
+            高齢の生産者さんでも迷いにくい、やさしい入り口を目指しています。
+          </p>
+
+          <div class="hero-points">
+            <span>話すだけで、その日の記録が残せる</span>
+            <span>あとで聞き返して作業メモにしやすい</span>
+            <span>畑の雰囲気に合う、やわらかな見た目</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="./voice-diary.html">音声日記をひらく</a>
+            <a class="button button-secondary" href="./voice-diary.html">見た目を確認する</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            class="hero-image"
+            src="./assets/farmer-voice-diary-hero.png"
+            alt="畑でスマートフォンを使って音声記録をしている高齢の農家さんのイラスト"
+          />
+
+          <div class="voice-badge">
+            <span>今日の音声記録</span>
+            <strong>きゅうりの出来、朝は良好</strong>
+            <div class="wave" aria-hidden="true">
+              <span style="height: 30%"></span>
+              <span style="height: 65%"></span>
+              <span style="height: 42%"></span>
+              <span style="height: 84%"></span>
+              <span style="height: 52%"></span>
+              <span style="height: 76%"></span>
+              <span style="height: 28%"></span>
+              <span style="height: 70%"></span>
+              <span style="height: 90%"></span>
+              <span style="height: 48%"></span>
+              <span style="height: 66%"></span>
+              <span style="height: 34%"></span>
+              <span style="height: 78%"></span>
+              <span style="height: 58%"></span>
+              <span style="height: 40%"></span>
+              <span style="height: 82%"></span>
+              <span style="height: 46%"></span>
+              <span style="height: 62%"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-grid">
+        <article class="info-card">
+          <h2>文字入力が少なくて安心</h2>
+          <p>長い文章を打たなくても、思いついたことをそのまま声で残せます。</p>
+        </article>
+
+        <article class="info-card">
+          <h2>農作業の流れに合う</h2>
+          <p>畑の途中で手を止めずに、気づいたことをさっと記録する想定です。</p>
+        </article>
+
+        <article class="info-card">
+          <h2>やさしい見た目</h2>
+          <p>土や葉を感じる色味と大きめのボタンで、親しみやすさを大切にしています。</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

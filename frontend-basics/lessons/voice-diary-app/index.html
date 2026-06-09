@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voice Diary</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <main class="shell">
+      <section class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Voice diary prototype</p>
+          <h1>声で残す、<br />今日の気分。</h1>
+          <p class="lead">
+            録音ボタンを押して、その日のひとことを保存する音声日記アプリです。
+            まずは見た目と手触りを大切にした、動くプロトタイプとして作っています。
+          </p>
+
+          <div class="hero-stats">
+            <article>
+              <strong id="entryCount">0</strong>
+              <span>entries</span>
+            </article>
+            <article>
+              <strong id="recordingStateLabel">standby</strong>
+              <span>status</span>
+            </article>
+            <article>
+              <strong id="todayLabel">--</strong>
+              <span>today</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="device">
+            <div class="device-header">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="wave" id="waveform" aria-hidden="true"></div>
+            <div class="device-footer">
+              <span>Mic input</span>
+              <strong id="timerLabel">00:00</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="composer panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Recorder</p>
+              <h2>今日の音声日記</h2>
+            </div>
+            <span class="badge" id="modeBadge">Demo mode</span>
+          </div>
+
+          <div class="recorder-card">
+            <button id="recordButton" class="record-button" type="button" aria-pressed="false">
+              <span class="record-ring"></span>
+              <span class="record-core"></span>
+            </button>
+
+            <div class="recorder-info">
+              <p class="recorder-label" id="recorderLabel">タップして録音スタート</p>
+              <p class="recorder-sub" id="recorderHint">
+                マイクが使える環境なら実録音、それ以外でもデモ音声として保存できます。
+              </p>
+            </div>
+          </div>
+
+          <form id="entryForm" class="entry-form">
+            <label class="field">
+              <span>タイトル</span>
+              <input id="titleInput" name="title" type="text" maxlength="40" placeholder="例: 帰り道のメモ" />
+            </label>
+
+            <label class="field">
+              <span>ひとことメモ</span>
+              <textarea
+                id="noteInput"
+                name="note"
+                rows="4"
+                maxlength="140"
+                placeholder="今の気分や、あとで聞き返したいことを少しだけ。"
+              ></textarea>
+            </label>
+
+            <div class="moods" id="moodGroup" role="radiogroup" aria-label="Mood">
+              <button type="button" class="mood-chip is-active" data-mood="Calm">Calm</button>
+              <button type="button" class="mood-chip" data-mood="Bright">Bright</button>
+              <button type="button" class="mood-chip" data-mood="Tired">Tired</button>
+              <button type="button" class="mood-chip" data-mood="Focused">Focused</button>
+              <button type="button" class="mood-chip" data-mood="Excited">Excited</button>
+            </div>
+
+            <div class="form-actions">
+              <button id="saveButton" class="primary-button" type="submit">この日記を保存</button>
+              <button id="clearButton" class="ghost-button" type="button">入力をリセット</button>
+            </div>
+
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="timeline panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Timeline</p>
+              <h2>最近の音声日記</h2>
+            </div>
+            <button id="wipeButton" class="text-button" type="button">すべて削除</button>
+          </div>
+
+          <div class="timeline-list" id="timelineList"></div>
+        </div>
+      </section>
+    </main>
+
+    <template id="entryTemplate">
+      <article class="diary-card">
+        <div class="diary-top">
+          <div>
+            <p class="diary-date"></p>
+            <h3 class="diary-title"></h3>
+          </div>
+          <span class="diary-mood"></span>
+        </div>
+
+        <div class="mini-wave" aria-hidden="true"></div>
+
+        <p class="diary-note"></p>
+
+        <div class="diary-bottom">
+          <button class="play-button" type="button">Play preview</button>
+          <span class="diary-duration"></span>
+        </div>
+      </article>
+    </template>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

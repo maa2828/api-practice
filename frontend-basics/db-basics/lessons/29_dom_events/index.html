@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DOMとイベント - Lesson 29</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="title">DOM操作とイベント</h1>
+
+      <section class="card">
+        <h2 class="card-title">1) クリックでカウント</h2>
+        <p class="count">Count: <span id="countValue">0</span></p>
+        <button id="countUpBtn" class="button" type="button">+1</button>
+        <button id="resetBtn" class="button secondary" type="button">リセット</button>
+      </section>
+
+      <section class="card">
+        <h2 class="card-title">2) 入力のプレビュー</h2>
+        <label class="label" for="nameInput">名前</label>
+        <input id="nameInput" class="input" type="text" placeholder="例：山田 太郎" />
+        <p class="hint">入力すると下のプレビューが更新されます。</p>
+        <div class="preview">
+          <p class="preview-title">プレビュー</p>
+          <p id="previewText" class="preview-text">（未入力）</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="card-title">3) メールの簡易チェック</h2>
+        <div id="emailField" class="field">
+          <label class="label" for="emailInput">メールアドレス</label>
+          <input id="emailInput" class="input" type="text" placeholder="example@example.com" />
+          <p id="emailError" class="error hidden">メールアドレスの形式が正しくありません。</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

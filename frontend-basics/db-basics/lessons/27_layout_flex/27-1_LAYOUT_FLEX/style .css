@@ -1,0 +1,146 @@
+/* ===== リセット ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== ページ全体 ===== */
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    background: #f5f7fa;
+    color: #1f2933;
+    line-height: 1.7;
+    padding: 32px 20px 64px;
+}
+
+.wrap {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.page-head {
+    margin-bottom: 32px;
+}
+
+.page-head h1 {
+    font-size: 1.7rem;
+    letter-spacing: .02em;
+}
+
+.page-head p {
+    color: #5b6b7b;
+    margin-top: 8px;
+    font-size: .95rem;
+}
+
+/* ===== 各演習のカード ===== */
+.exercise {
+    background: #ffffff;
+    border: 1px solid #d9e2ec;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(31, 41, 51, .04);
+}
+
+.exercise h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.num {
+    background: #2563eb;
+    color: #fff;
+    font-size: .8rem;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.desc {
+    color: #5b6b7b;
+    font-size: .92rem;
+    margin: 6px 0 16px;
+}
+
+/* ===== 演習で使う「箱」と「コンテナ」 ===== */
+.container {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    background: repeating-linear-gradient(45deg, #fafafa, #fafafa 10px, #f1f5f9 10px, #f1f5f9 20px);
+}
+
+.box {
+    height: 80px;
+    width: 80px;
+    border-radius: 4px;
+}
+
+.a { background-color: aqua; }
+.b { background-color: blue; }
+.c { background-color: yellowgreen; }
+.d { background-color: violet; }
+
+/* 演習1：横一列 */
+.ex1 {
+    display: flex;
+}
+
+/* 演習2：中央に横並び */
+.ex2 {
+    display: flex;
+    justify-content: center;
+}
+
+/* 演習3：均等な間隔で横並び */
+.ex3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 演習4：縦中央に横並び */
+.ex4 {
+    display: flex;
+    align-items: center;
+}
+
+/* 演習5：2×2 のグリッド */
+.ex5 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 160px;   /* 80px × 2 でいっぱい → 折り返して 2×2 */
+    height: 160px;
+}
+
+/* ===== コード表示 ===== */
+pre {
+    background: #1f2933;
+    color: #e6edf3;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.6;
+    font-family: "SFMono-Regular", "Consolas", "Menlo", monospace;
+}
+
+/* ===== 補足メモ ===== */
+.note {
+    background: #eef4ff;
+    border-left: 3px solid #2563eb;
+    padding: 12px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: .88rem;
+    color: #1e3a5f;
+    margin-top: 14px;
+}

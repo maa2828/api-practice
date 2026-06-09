@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>レイアウト演習 - Lesson 27</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <span class="logo">KP</span>
+        <span class="brand-name">Frontend Basics</span>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link" href="../25_html_basics/">HTML</a>
+        <a class="nav-link" href="../26_css_basics/">CSS</a>
+        <a class="nav-link is-active" href="./">Layout</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1 class="hero-title">Flexboxでレイアウトを学ぶ</h1>
+        <p class="hero-text">
+          画面幅に応じて並び方が変わるカード一覧を使って、配置と折り返しを練習します。
+        </p>
+      </section>
+
+      <section>
+        <h2 class="section-title">カード一覧</h2>
+        <div class="card-list">
+          <article class="card">
+            <h3 class="card-title">Card 1</h3>
+            <p class="card-text">Flexboxの基本となる横並びと余白の扱いを確認します。</p>
+            <a class="card-link" href="#">詳細</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Card 2</h3>
+            <p class="card-text">画面幅が変わったときに、要素がどう折り返すかを観察します。</p>
+            <a class="card-link" href="#">詳細</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Card 3</h3>
+            <p class="card-text">`justify-content` を変えて、並び位置の違いを比べてみましょう。</p>
+            <a class="card-link" href="#">詳細</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Card 4</h3>
+            <p class="card-text">`flex-basis` に近い最小幅の指定で、列数の変化を確認できます。</p>
+            <a class="card-link" href="#">詳細</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Card 5</h3>
+            <p class="card-text">カード内を縦方向のFlexにして、リンク位置をそろえます。</p>
+            <a class="card-link" href="#">詳細</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Card 6</h3>
+            <p class="card-text">少し長めの文章を入れても、ボタンが下にそろう状態を作ります。</p>
+            <a class="card-link" href="#">詳細</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">自己紹介カード</h3>
+            <p class="card-text">
+              フロントエンド学習中です。レイアウトを少しずつ理解しながら、見やすいUIを作れるよう練習しています。
+            </p>
+            <a class="card-link" href="#">プロフィールを見る</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Lesson 27 / Flexbox Layout</small>
+    </footer>
+  </body>
+</html>

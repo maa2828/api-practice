@@ -1,0 +1,131 @@
+/* ベース（全体の見た目） */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  color: #1f2937;
+  background-color: #f3f4f6;
+}
+
+/* ヘッダー */
+.site-header {
+  padding: 24px 16px;
+  background-color: #111827;
+  color: #ffffff;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* レイアウト（最小限） */
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* カード */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+/* リスト */
+.list {
+  margin: 0 0 16px;
+  padding-left: 18px;
+}
+
+/* ボタン風リンク */
+.button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: #1d4ed8;
+}
+
+/* メモ */
+.note {
+  margin: 0;
+}
+
+#memo {
+  background-color: #fffbeb;
+}
+
+body {
+  line-height: 1.8;
+}
+
+.subtitle {
+  font-size: 14px;
+}
+
+.note {
+  font-size: 16px;
+}
+
+.button {
+  border: 1px solid #1d4ed8;
+  transition: transform 120ms, background-color 120ms;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.card {
+  margin-bottom: 24px;
+}
+
+.container {
+  padding: 32px 16px;
+}
+
+.highlight {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.normal-link {
+  color: #2563eb;
+}
+
+.normal-link:hover {
+  text-decoration: underline;
+}
+
+/* フッター */
+.site-footer {
+  padding: 16px;
+  text-align: center;
+  color: #6b7280;
+}

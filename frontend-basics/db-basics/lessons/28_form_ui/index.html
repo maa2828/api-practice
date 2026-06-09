@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせフォーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1 class="title">お問い合わせフォーム</h1>
+      <p class="subtitle">
+        入力UI・必須入力・エラー表示の練習
+      </p>
+    </header>
+
+    <section class="card">
+      <h2 class="card-title">お問い合わせ</h2>
+
+      <form class="form">
+
+        <!-- 名前 -->
+        <div class="field">
+          <label class="label" for="name">
+            名前
+            <span class="required">必須</span>
+          </label>
+          <input class="input" id="name" type="text" required>
+        </div>
+
+        <!-- 電話番号 -->
+        <div class="field">
+          <label class="label" for="tel">電話番号</label>
+          <input class="input" id="tel" name="tel" type="tel">
+        </div>
+
+        <!-- 連絡方法 -->
+        <div class="field">
+          <p class="label">連絡方法</p>
+
+          <label>
+            <input type="radio" name="contact" value="email">
+            メール
+          </label>
+
+          <label>
+            <input type="radio" name="contact" value="tel">
+            電話
+          </label>
+        </div>
+
+        <!-- エラー例1 -->
+        <div class="field is-error">
+          <label class="label" for="error-email">
+            メールアドレス
+          </label>
+          <input class="input" id="error-email" type="email">
+          <p class="error">
+            メールアドレスを入力してください
+          </p>
+        </div>
+
+        <!-- エラー例2 -->
+        <div class="field is-error">
+          <label class="label" for="error-name">
+            お名前
+          </label>
+          <input class="input" id="error-name" type="text">
+          <p class="error">
+            お名前を入力してください
+          </p>
+        </div>
+
+        <!-- エラー例3 -->
+        <div class="field is-error">
+          <label class="label" for="message">
+            お問い合わせ内容
+          </label>
+          <textarea
+            class="textarea"
+            id="message"
+            rows="4"
+          ></textarea>
+          <p class="error">
+            お問い合わせ内容が短すぎます
+          </p>
+        </div>
+
+        <div class="actions">
+          <button class="button" type="submit">
+            送信
+          </button>
+          <button class="button" type="button" disabled>
+            送信（無効）
+          </button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+</body>
+</html>
