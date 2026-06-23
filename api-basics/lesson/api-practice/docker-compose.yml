@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: api_practice_db
+    restart: always
+    environment:
+      POSTGRES_USER: api_practice
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: api_practice
+    ports:
+      - "5432:5432"
+    volumes:
+      - api_practice_db_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: api_practice_api
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://api_practice:password@db:5432/api_practice?schema=public
+      CORS_ORIGIN: http://13.112.223.7
+      PORT: 3000
+
+volumes:
+  api_practice_db_data:
